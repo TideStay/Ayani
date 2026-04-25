@@ -926,10 +926,10 @@ You become part of the whole.
   <footer id="contact" class="pt-16 pb-10 px-6">
     <div class="max-w-6xl mx-auto">
 
-      <!-- Top grid: logo and contact (no middle/empty column) -->
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center text-center md:text-left mb-16 pb-16" style="border-bottom: 1px solid rgba(245,239,228,0.1);">
+      <!-- Top symmetric grid -->
+      <div class="grid md:grid-cols-2 gap-12 items-start text-left mb-16 pb-16" style="border-bottom: 1px solid rgba(245,239,228,0.1);">
         
-        <!-- Column 1: Logo, centered on mobile, left-aligned on desktop -->
+        <!-- Column 1: Only the wooden sign image, centered on mobile, left-aligned on desktop -->
         <div class="flex justify-center md:justify-start">
           <img 
             src="./AYANIWOOD.jpeg" 
@@ -939,26 +939,39 @@ You become part of the whole.
           />
         </div>
 
-        <!-- Column 2: CONTACTO / GET IN TOUCH -->
+        <!-- Column 2: EXPLORE menu links -->
+        <div>
+          <p class="section-label mb-6"hidden style="color: rgba(245,239,228,0.4);"></p>
+          <ul class="space-y-3">
+            <li><a href="#philosophy" class="text-sm transition-colors hover:text-white" style="color: rgba(245,239,228,0.6);"></a></li>
+            <li><a href="#schedule" class="text-sm transition-colors hover:text-white" style="color: rgba(245,239,228,0.6);"></a></li>
+            <li><a href="#community" class="text-sm transition-colors hover:text-white" style="color: rgba(245,239,228,0.6);"></a></li>
+            <li><a href="#booking" class="text-sm transition-colors hover:text-white" style="color: rgba(245,239,228,0.6);"></a></li>
+            <li><a href="#booking" class="text-sm transition-colors hover:text-white" style="color: rgba(245,239,228,0.6);"></a></li>
+          </ul>
+        </div>
+
+        <!-- Column 3: Contact details -->
         <div>
           <p class="section-label mb-6" style="color: rgba(245,239,228,0.4);">
             <span class="lang-es">CONTACTO</span><span class="lang-en">GET IN TOUCH</span>
           </p>
   
           <div class="space-y-4">
-            <div class="flex items-start gap-3 justify-center md:justify-start">
+            <div class="flex items-start gap-3">
               <svg class="w-4 h-4 mt-0.5 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" style="stroke:var(--terracotta-light);">
                 <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0Z"/><circle cx="12" cy="10" r="3"/>
               </svg>
               <p class="text-sm" style="color: rgba(245,239,228,0.6);">San Juanillo, Guanacaste<br>Costa Rica</p>
             </div>
-            <div class="flex items-center gap-3 justify-center md:justify-start">
+            <div class="flex items-center gap-3">
               <svg class="w-4 h-4 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" style="stroke:var(--terracotta-light);">
                 <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.14 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.05 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 21 16.92Z"/>
               </svg>
               <a href="tel:+50600000000" class="text-sm hover:text-white transition-colors" style="color: rgba(245,239,228,0.6);"><span class="lang-es">Próximamente</span><span class="lang-en">Coming Soon</span></a>
+     
             </div>
-            <div class="flex items-center gap-3 justify-center md:justify-start">
+            <div class="flex items-center gap-3">
               <svg class="w-4 h-4 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" style="stroke:var(--terracotta-light);">
                 <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2Z"/><path d="m22 6-10 7L2 6"/>
               </svg>
