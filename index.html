@@ -317,6 +317,21 @@
   <!-- ═══════════════════════════════════════
        NAV
   ═══════════════════════════════════════ -->
+  <style>
+    /* Smoothly transition border and text color for language toggle, just like nav-link */
+    #nav.hero-mode #lang-toggle {
+      color: var(--off-white);
+      border-color: var(--off-white);
+      transition: color 0.25s, border-color 0.25s, background 0.2s;
+    }
+    #nav.scrolled #lang-toggle,
+    #nav:not(.hero-mode) #lang-toggle {
+      color: var(--text-dark);
+      border-color: var(--text-dark);
+      transition: color 0.25s, border-color 0.25s, background 0.2s;
+    }
+    /* Ensure it matches nav-link transitions/appearance */
+  </style>
   <nav id="nav" class="hero-mode">
     <div class="max-w-7xl mx-auto flex items-center justify-between">
       <!-- Logo (Restored and updated per prompt) -->
