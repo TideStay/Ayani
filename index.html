@@ -1070,9 +1070,20 @@ You become part of the whole.
           submitBtn.querySelector('.lang-es').textContent = "Enviando...";
           submitBtn.querySelector('.lang-en').textContent = "Sending...";
           var formData = new FormData(form);
+
+          // Convert FormData to JS object
+          var dataObj = {};
+          formData.forEach(function(value, key) {
+            dataObj[key] = value;
+          });
+
           fetch("https://hook.eu1.make.com/4jeyb6mvst4jhmww49vh2evl2ob3rn6y", {
             method: "POST",
-            body: formData
+            headers: {
+              "Content-Type": "application/json",
+              "Accept": "application/json"
+            },
+            body: JSON.stringify(dataObj)
           })
           .then(function(response){
             if (response.ok) {
