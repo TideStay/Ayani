@@ -839,15 +839,260 @@ You become part of the whole.
 
       <!-- CTA -->
       <div class="fade-up delay-3 inline-flex flex-col items-center gap-4">
-        <a href="#booking" class="btn-primary text-base px-10 py-4">
+        <button 
+          id="open-community-modal"
+          type="button"
+          class="btn-primary text-base px-10 py-4"
+        >
           <span class="lang-es">Únete a la comunidad</span>
           <span class="lang-en">Join the community</span>
-        </a>
-
-        </p>
+        </button>
       </div>
+
+      <!-- Modal -->
+      <div 
+        id="community-modal" 
+        class="fixed inset-0 z-50 flex justify-center items-center bg-black/60 backdrop-blur-sm transition-opacity duration-300 opacity-0 pointer-events-none"
+        aria-modal="true" 
+        role="dialog"
+      >
+        <div class="relative bg-[var(--off-white)] rounded-3xl shadow-xl w-full max-w-lg mx-auto px-8 py-8 flex flex-col items-stretch gap-6 border border-[var(--sand)]"
+             style="color: var(--text-dark);">
+
+          <!-- Close button -->
+          <button 
+            type="button" 
+            id="close-community-modal" 
+            class="absolute top-6 right-6 text-2xl font-bold text-gray-400 hover:text-gray-700 focus:outline-none" 
+            aria-label="Close"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <title>
+                <span class="lang-es">Cerrar</span>
+                <span class="lang-en">Close</span>
+              </title>
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+            </svg>
+          </button>
+
+          <!-- Modal Title -->
+          <h3 class="font-serif text-2xl mb-1 text-center">
+            <span class="lang-es">Lista de Espera</span>
+            <span class="lang-en">Waitlist</span>
+          </h3>
+          <p class="mb-2 text-center text-base" style="color:var(--text-mid)">
+            <span class="lang-es">Su registro nos ayuda a abrir el círculo inicial de Ayani.</span>
+            <span class="lang-en">Your sign-up helps us open Ayani’s first community circle.</span>
+          </p>
+
+          <!-- Form -->
+          <form id="community-waitlist-form" class="flex flex-col gap-4">
+            <label class="text-left font-medium" for="waitlist-name">
+              <span class="lang-es">Nombre Completo</span>
+              <span class="lang-en">Full Name</span>
+            </label>
+            <input 
+              id="waitlist-name" 
+              name="name" 
+              type="text" 
+              required
+              class="rounded-xl border border-sand px-4 py-2 focus:outline-none focus:ring-2 focus:ring-[var(--terracotta)] bg-white/80"
+              placeholder=""
+              maxlength="100"
+            />
+            <script>
+              // Dynamic placeholder support (for i18n placeholder)
+              document.addEventListener("DOMContentLoaded", function() {
+                function setWaitlistNamePlaceholder() {
+                  var input = document.getElementById('waitlist-name');
+                  var lang = document.documentElement.getAttribute('lang') || 'es';
+                  if(input) {
+                    input.placeholder = lang === 'es' ? 'Tu nombre completo' : 'Your full name';
+                  }
+                }
+                setWaitlistNamePlaceholder();
+                document.addEventListener('langchange', setWaitlistNamePlaceholder);
+              });
+            </script>
+
+            <label class="text-left font-medium" for="waitlist-email">
+              <span class="lang-es">Correo Electrónico</span>
+              <span class="lang-en">Email Address</span>
+            </label>
+            <input 
+              id="waitlist-email" 
+              name="email" 
+              type="email" 
+              required
+              class="rounded-xl border border-sand px-4 py-2 focus:outline-none focus:ring-2 focus:ring-[var(--terracotta)] bg-white/80"
+              placeholder=""
+              maxlength="100"
+            />
+            <script>
+              // Dynamic placeholder support (for i18n placeholder)
+              document.addEventListener("DOMContentLoaded", function() {
+                function setWaitlistEmailPlaceholder() {
+                  var input = document.getElementById('waitlist-email');
+                  var lang = document.documentElement.getAttribute('lang') || 'es';
+                  if(input) {
+                    input.placeholder = lang === 'es' ? 'ejemplo@correo.com' : 'name@email.com';
+                  }
+                }
+                setWaitlistEmailPlaceholder();
+                document.addEventListener('langchange', setWaitlistEmailPlaceholder);
+              });
+            </script>
+
+            <label class="text-left font-medium" for="waitlist-message">
+              <span class="lang-es">Mensaje (opcional)</span>
+              <span class="lang-en">Message (optional)</span>
+            </label>
+            <textarea 
+              id="waitlist-message" 
+              name="message"
+              class="rounded-xl border border-sand px-4 py-2 focus:outline-none focus:ring-2 focus:ring-[var(--terracotta)] bg-white/80 resize-none"
+              rows="3"
+              placeholder=""
+              maxlength="600"
+            ></textarea>
+            <script>
+              // Dynamic placeholder for textarea
+              document.addEventListener("DOMContentLoaded", function() {
+                function setWaitlistMessagePlaceholder() {
+                  var textarea = document.getElementById('waitlist-message');
+                  var lang = document.documentElement.getAttribute('lang') || 'es';
+                  if (textarea) {
+                    textarea.placeholder = lang === 'es'
+                      ? '¿Hay algo que te gustaría compartir?'
+                      : 'Anything you’d like to share?';
+                  }
+                }
+                setWaitlistMessagePlaceholder();
+                document.addEventListener('langchange', setWaitlistMessagePlaceholder);
+              });
+            </script>
+
+            <button 
+              id="waitlist-submit"
+              type="submit" 
+              class="mt-4 px-8 py-3 rounded-xl font-semibold text-white text-base"
+              style="background: var(--terracotta);"
+            >
+              <span class="lang-es">Unirse</span>
+              <span class="lang-en">Join</span>
+            </button>
+          </form>
+
+          <!-- Thank You Message (hidden by default) -->
+          <div id="waitlist-thankyou" class="hidden flex-col text-center items-center justify-center py-14">
+            <svg class="mx-auto mb-6" width="60" height="60" viewBox="0 0 60 60" fill="none">
+              <circle cx="30" cy="30" r="30" fill="var(--terracotta)" opacity="0.11"/>
+              <path d="M18 31l9 9 15-17" stroke="var(--terracotta)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+            </svg>
+            <h4 class="font-serif text-2xl mb-2" style="color:var(--terracotta);">
+              <span class="lang-es">¡Gracias!</span>
+              <span class="lang-en">Thank You!</span>
+            </h4>
+            <p class="mb-1 text-base" style="color:var(--text-mid);">
+              <span class="lang-es">Tu registro ha sido recibido.<br>Te avisaremos cuando la comunidad abra sus puertas.</span>
+              <span class="lang-en">Your information has been received.<br>We’ll email you when the community circle opens.</span>
+            </p>
+          </div>
+        </div>
+      </div>
+      <!-- End Modal -->
     </div>
   </section>
+  <script>
+    (function() {
+      var openBtn = document.getElementById('open-community-modal');
+      var modal = document.getElementById('community-modal');
+      var closeBtn = document.getElementById('close-community-modal');
+      var form = document.getElementById('community-waitlist-form');
+      var thankYou = document.getElementById('waitlist-thankyou');
+      var submitBtn = document.getElementById('waitlist-submit');
+      var active = false;
+
+      function openModal() {
+        modal.classList.remove('opacity-0', 'pointer-events-none');
+        modal.classList.add('opacity-100');
+        active = true;
+        document.body.classList.add('overflow-hidden');
+        // focus first field
+        setTimeout(function(){
+          var f = form.querySelector('input,textarea');
+          if (f) f.focus();
+        },200);
+      }
+      function closeModal() {
+        modal.classList.remove('opacity-100');
+        modal.classList.add('opacity-0', 'pointer-events-none');
+        active = false;
+        document.body.classList.remove('overflow-hidden');
+        // Reset form and thank you
+        if(form) { form.reset(); form.style.display = ""; }
+        if(thankYou) thankYou.classList.add('hidden');
+        if(submitBtn) {
+          submitBtn.disabled = false;
+          // restore button text
+          submitBtn.querySelector('.lang-es').textContent = "Unirse";
+          submitBtn.querySelector('.lang-en').textContent = "Join";
+        }
+      }
+      if (openBtn && modal) {
+        openBtn.addEventListener('click', function(e){
+          e.preventDefault();
+          openModal();
+        });
+      }
+      if (closeBtn) {
+        closeBtn.addEventListener('click', function(){
+          closeModal();
+        });
+      }
+      // Backdrop click closes modal
+      if (modal) {
+        modal.addEventListener('mousedown', function(e){
+          // Only if user clicks the backdrop (not inside modal container)
+          if (e.target === modal) closeModal();
+        });
+        // For keyboard: Escape closes modal
+        document.addEventListener('keydown', function(evt){
+          if (active && evt.key === "Escape") closeModal();
+        });
+      }
+      // Form submission handling
+      if (form) {
+        form.addEventListener('submit', function(e){
+          e.preventDefault();
+          if(!submitBtn) return;
+          submitBtn.disabled = true;
+          submitBtn.querySelector('.lang-es').textContent = "Enviando...";
+          submitBtn.querySelector('.lang-en').textContent = "Sending...";
+          var formData = new FormData(form);
+          fetch("https://hook.eu1.make.com/4jeyb6mvst4jhmww49vh2evl2ob3rn6y", {
+            method: "POST",
+            body: formData
+          })
+          .then(function(response){
+            if (response.ok) {
+              form.style.display = "none";
+              if (thankYou) thankYou.classList.remove('hidden');
+            } else {
+              submitBtn.disabled = false;
+              submitBtn.querySelector('.lang-es').textContent = "Intenta de nuevo";
+              submitBtn.querySelector('.lang-en').textContent = "Try Again";
+            }
+          })
+          .catch(function(){
+            submitBtn.disabled = false;
+            submitBtn.querySelector('.lang-es').textContent = "Intenta de nuevo";
+            submitBtn.querySelector('.lang-en').textContent = "Try Again";
+          });
+        });
+      }
+    })();
+  </script>
 
 
   <!-- ═══════════════════════════════════════
